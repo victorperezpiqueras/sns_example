@@ -1,0 +1,97 @@
+service: sns-example
+
+frameworkVersion: '2'
+
+custom:
+  snsTopicName: example-topic
+provider:
+  name: aws
+  runtime: python3.8
+  region: us-east-1 
+
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - sns:*
+      Resource: "arn:aws:sns:us-east-1:*:*"
+
+      #  Fn::GetAtt:
+      #    - SNSTopic
+      #    - Arn
+      
+        #"arn:aws:sns:${self:provider.region}:*:${self:custom.snsTopicName}"
+
+plugins:
+  - serverless-offline
+
+functions:
+  subscribe_topic:
+    handler: subscribe_topic.subscribe_topic
+    events:
+      - http:
+          path: subscribe_topic/{topic}
+          method: post
+          cors: #true
+            origin: '*'
+            headers:
+              - Content-Type
+              - X-Amz-Date
+              - Authorization
+              - X-Api-Key
+              - X-Amz-Security-Token
+              - X-Amz-User-Agent
+              - Access-Control-Allow-Origin 
+              - Access-Control-Allow-Credentials 
+            allowCredentials: true
+
+  send_message_to_topic:
+    handler: send_message_to_topic.send_message_to_topic
+    events:
+      - http:
+          path: send_message_to_topic/{topic}
+          method: post
+          cors: #true
+            origin: '*'
+            headers:
+              - Content-Type
+              - X-Amz-Date
+              - Authorization
+              - X-Api-Key
+              - X-Amz-Security-Token
+              - X-Amz-User-Agent
+              - Access-Control-Allow-Origin 
+              - Access-Control-Allow-Credentials 
+            allowCredentials: true
+
+  list_subscriptions_by_topic:
+    handler: list_subscriptions_by_topic.list_subscriptions_by_topic
+    events:
+      - http:
+          path: list_subscriptions_by_topic/{topic}
+          method: get
+          cors: #true
+            origin: '*'
+            headers:
+              - Content-Type
+              - X-Amz-Date
+              - Authorization
+              - X-Api-Key
+              - X-Amz-Security-Token
+              - X-Amz-User-Agent
+              - Access-Control-Allow-Origin 
+              - Access-Control-Allow-Credentials 
+            allowCredentials: true
+
+ # notify_message:
+ #   handler: list_subscriptions
+ #   events:
+ #     - sns:
+ #       arn: ${self:custom.snsTopicArn}
+
+resources:
+  Resources:
+    SNSTopic:
+      Type: AWS::SNS::Topic
+      Properties:
+        DisplayName: SNS Example Topic
+        TopicName: ${self:custom.snsTopicName}

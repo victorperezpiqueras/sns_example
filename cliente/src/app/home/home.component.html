@@ -1,0 +1,64 @@
+<div class="container" fxLayout="column" fxLayoutGap="1%">
+  <mat-card>
+    <mat-card-title>Topic: {{topic}}</mat-card-title>
+  </mat-card>
+
+  <mat-card>
+    <mat-card-content>
+      <mat-card-title>Subscriptions
+        <button mat-raised-button color="primary" (click)="refresh()">
+          <mat-icon>refresh</mat-icon>
+        </button>
+      </mat-card-title>
+      <mat-card-subtitle>
+        
+        <app-loader [isLoading]="isLoading" size="1.5"></app-loader>
+
+        <mat-list role="list">
+          <mat-list-item role="listitem" *ngFor="let sub of subscriptors">{{sub}}</mat-list-item>
+        </mat-list>
+
+      </mat-card-subtitle>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card>
+    <mat-card-content>
+      <mat-card-title>Invite subscriptor</mat-card-title>
+      <mat-card-subtitle>
+
+        <mat-form-field class="title form" appearance="outline">
+          <mat-label>Subscriptor email</mat-label>
+          <input matInput placeholder="Email" [(ngModel)]="email" />
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" (click)="addSubscriptor()" [disabled]="!email">
+          <mat-icon>add</mat-icon>&nbsp;&nbsp;Invite
+        </button>
+
+      </mat-card-subtitle>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card>
+    <mat-card-content>
+      <mat-card-title>Send a message</mat-card-title>
+      <mat-card-subtitle>
+        <mat-form-field class="title form" appearance="outline">
+          <mat-label>Subject</mat-label>
+          <input matInput placeholder="Subject" [(ngModel)]="subject" />
+        </mat-form-field>
+        <mat-form-field class="title form" appearance="outline">
+          <mat-label>Content</mat-label>
+          <input matInput placeholder="Content" [(ngModel)]="message" />
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" (click)="publish()" [disabled]="!message || !subject">
+          <mat-icon>send</mat-icon>&nbsp;&nbsp;Publish
+        </button>
+
+      </mat-card-subtitle>
+    </mat-card-content>
+  </mat-card>
+
+</div>

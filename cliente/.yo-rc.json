@@ -1,0 +1,59 @@
+{
+  "generator-ngx-rocket": {
+    "appName": "sns-example",
+    "target": [
+      "web"
+    ],
+    "pwa": true,
+    "mobile": null,
+    "desktop": null,
+    "ui": "material",
+    "layout": "simple",
+    "auth": true,
+    "lazy": true,
+    "angulartics": false,
+    "languages": [
+      "en-US"
+    ],
+    "analyticsProvider": null,
+    "googleAnalyticsAccount": null,
+    "tools": [
+      "prettier",
+      "hads"
+    ],
+    "utility": [],
+    "deploy": "none",
+    "version": "8.1.1",
+    "props": {
+      "location": "path",
+      "strict": false,
+      "skipInstall": false,
+      "skipQuickstart": false,
+      "initGit": true,
+      "usePrefix": true,
+      "appName": "cliente",
+      "target": [
+        "web"
+      ],
+      "pwa": true,
+      "ui": "material",
+      "layout": "side-menu",
+      "auth": true,
+      "lazy": true,
+      "angulartics": false,
+      "languages": [
+        "en-US"
+      ],
+      "tools": [
+        "prettier",
+        "hads"
+      ],
+      "utility": [],
+      "deploy": "none",
+      "projectName": "cliente",
+      "packageManager": "npm",
+      "mobile": [],
+      "desktop": []
+    }
+  }
+}
