@@ -2,8 +2,6 @@ service: sns-example
 
 frameworkVersion: '2'
 
-custom:
-  snsTopicName: example-topic
 provider:
   name: aws
   runtime: python3.8
@@ -15,14 +13,8 @@ provider:
         - sns:*
       Resource: "arn:aws:sns:us-east-1:*:*"
 
-      #  Fn::GetAtt:
-      #    - SNSTopic
-      #    - Arn
-      
-        #"arn:aws:sns:${self:provider.region}:*:${self:custom.snsTopicName}"
-
-plugins:
-  - serverless-offline
+custom:
+  snsTopicName: example-topic
 
 functions:
   subscribe_topic:
@@ -81,12 +73,6 @@ functions:
               - Access-Control-Allow-Origin 
               - Access-Control-Allow-Credentials 
             allowCredentials: true
-
- # notify_message:
- #   handler: list_subscriptions
- #   events:
- #     - sns:
- #       arn: ${self:custom.snsTopicArn}
 
 resources:
   Resources:

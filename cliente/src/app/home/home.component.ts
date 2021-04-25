@@ -84,7 +84,9 @@ export class HomeComponent implements OnInit {
       .subscribe((subscriptors: Response) => {
         this.subscriptors = [];
         subscriptors.Subscriptions.forEach((sub: Subscription) => {
-          this.subscriptors.push(sub.Endpoint)
+          if (sub.SubscriptionArn !== "PendingConfirmation" && sub.SubscriptionArn !== "Deleted") {
+            this.subscriptors.push(sub.Endpoint);
+          }
         });
       });
   }
