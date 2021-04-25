@@ -1,0 +1,81 @@
+{
+	"info": {
+		"_postman_id": "c2140e98-4f59-4408-bda3-e8ef1fe6cbf0",
+		"name": "PyGiTIC_SNS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "https://ygkhh2oes0.execute-api.us-east-1.amazonaws.com/dev/subscribe_topic/",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"{{email}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{aws_url}}/subscribe_topic/{{topic_arn}}",
+					"host": [
+						"{{aws_url}}"
+					],
+					"path": [
+						"subscribe_topic",
+						"{{topic_arn}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://ygkhh2oes0.execute-api.us-east-1.amazonaws.com/dev/send_message_to_topic/",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"message\":\"mensaje prueba\",\r\n    \"subject\":\"subject prueba\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{aws_url}}/send_message_to_topic/{{topic_arn}}",
+					"host": [
+						"{{aws_url}}"
+					],
+					"path": [
+						"send_message_to_topic",
+						"{{topic_arn}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://ygkhh2oes0.execute-api.us-east-1.amazonaws.com/dev/list_subscriptions_by_topic/",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{aws_url}}/list_subscriptions_by_topic/{{topic_arn}}",
+					"host": [
+						"{{aws_url}}"
+					],
+					"path": [
+						"list_subscriptions_by_topic",
+						"{{topic_arn}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
