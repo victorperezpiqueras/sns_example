@@ -5,7 +5,9 @@ AWS Simple Notification Service example web app to list and invite subscribers t
 Run ```jupyter notebook``` to see some examples of Boto3 SNS methods.
 
 ## Client
-Angular client template, made with ngxrocket. To run in ```localhost:4200```, go to /client and execute:
+Angular client template, made with ngxrocket. 
+In ```src/environments/environment.ts```, change awsUrl and topicArn for your aws api endpoint url and your topic Arn, respectively.
+To run in ```localhost:4200```, go to /client and execute:
 ```ng serve```
 
 ## AWS

@@ -10,7 +10,8 @@ export const environment = {
   production: true,
   hmr: false,
   version: env.npm_package_version,
-  serverUrl: 'https://api.chucknorris.io',
+  awsUrl: 'https://zggxtkhqb6.execute-api.us-east-1.amazonaws.com/dev',
+  topicArn: "arn:aws:sns:us-east-1:696855912264:example-topic",
   defaultLanguage: 'en-US',
   supportedLanguages: ['en-US'],
 };

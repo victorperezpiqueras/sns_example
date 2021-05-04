@@ -13,7 +13,7 @@ const httpOptions = {
 })
 export class SNSService {
   public url = environment.awsUrl;
-  public topicArn = "arn:aws:sns:us-east-1:304738393208:example-topic"
+  public topicArn = environment.topicArn;
   constructor(private http: HttpClient) { }
 
   listSubscriptionsByTopic(): Observable<any> {
